@@ -16,10 +16,12 @@ app.get('/',(req,res)=>{
 const userRoute=require('./routes/user-route')
 const houseRoute=require('./routes/house-route')
 const imageRoute=require('./routes/image-route')
+const loginRoute=require('./routes/login-route')
 
 app.use('/users',userRoute)
 app.use('/houses',houseRoute)
 app.use('/images',imageRoute)
+app.use('/login',loginRoute)
 
 
 
@@ -30,6 +32,6 @@ app.use('/images',imageRoute)
 
 
 
-app.listen(process.env.PORT,()=>{
-    console.log('listening on port',process.env.PORT)
+app.listen(process.env.Port,()=>{
+    console.log('listening on port',process.env.Port)
 })

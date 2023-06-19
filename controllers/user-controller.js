@@ -1,5 +1,7 @@
 const { usersModel } = require("../models/users-model");
 const { usersValidation } = require("../validations/users-validation");
+const bcrypt=require('bcrypt')
+
 //get data
 const get = async (req, res) => {
   try {
@@ -27,6 +29,10 @@ const Post = async (req, res) => {
     if (error) return res.send(error.message);
     //post data
     const postData = new usersModel(req.body);
+    postData.password=await bcrypt.hash(postData.password,10)
+    //if user is already exit
+    let allUsers=await usersModel.find({email:req.body.email})
+    if(allUsers.length>0) return res.send({status:false,message:'this user allready exit'})
     //save post data
     await postData.save();
     res.send({

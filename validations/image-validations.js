@@ -1,5 +1,5 @@
 const joi = require('joi')
-//house validation
+//image validation
 function imagesValidation(image){
     const imageVal=joi.object({
         house:joi.string().required(),
