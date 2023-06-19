@@ -11,14 +11,14 @@ const login = async (req, res) => {
     try {
         // validation
         let { error } = loginValidation(req.body);
-        if (error) return res.send(error.message);
+        if (error) return res.status(449).send(error.message);
     
         // find user data
         let usergetdata = await usersModel.findOne({
             email: req.body.email,
         });
         if (!usergetdata)
-          return res.send({
+          return res.status(401).send({
             status: false,
             message: 'username or password is incorrect',
           });
@@ -29,7 +29,7 @@ const login = async (req, res) => {
           usergetdata.password
         );
         if (!checkpass)
-          return res.send({
+          return res.status(401).send({
             status:false,
             message: 'username or password is incorrect',
           });
@@ -44,13 +44,13 @@ const login = async (req, res) => {
         );
         
     
-        res.header('token', token).json({
+        res.status(200).header('token', token).json({
           status: true,
           message: 'successfully logged in',
           token: token,
         });
       } catch (error) {
-        res.send(error.message);
+        res.status(400).send(error.message);
       }
 };
 
