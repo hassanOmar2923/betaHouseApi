@@ -56,7 +56,7 @@ const houseSchema=mongoose.Schema({
     user:{
         type:mongoose.Types.ObjectId,
         ref:'users',
-        required:true
+        // required:true
     },
 
 })
