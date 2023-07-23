@@ -5,21 +5,23 @@ const { MongoMemoryServer } =require('mongodb-memory-server');
 require('dotenv').config()
 const app=express()
 app.use(express.json());
-//connecting to mongodb server
-// mongoose.connect('mongodb://127. 0.0.1:27017/betaHouse')
-//   .then(() => console.log('Connected!'));
+// connecting to mongodb server
+mongoose.set('strictQuery', false);
+
+mongoose.connect('mongodb+srv://xasancumar:1zhHPp6abdOhvt1k@cluster0.d4o1wlf.mongodb.net/betaHOUSE')
+  .then(() => console.log('Connected!'));
 
 
 //connecting to MongoMemoryServer
-const connectDB=async()=>{
+// const connectDB=async()=>{
 
-const mongoServer = await MongoMemoryServer.create();
+// const mongoServer = await MongoMemoryServer.create();
 
 
-  await mongoose.connect(mongoServer.getUri(), { dbName: "betaHouse" });
-  await console.log('connected to the db')
-}
-connectDB()
+//   await mongoose.connect(mongoServer.getUri(), { dbName: "betaHouse" });
+//   await console.log('connected to the db')
+// }
+// connectDB()
 // app.use(function (err, req, res, next) {
 //   // set locals, only providing error in development
 //   res.locals.message = err.message;
