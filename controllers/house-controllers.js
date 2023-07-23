@@ -17,7 +17,7 @@ const get = async (req, res) => {
 //getById
 const getaById = async (req, res) => {
     try {
-        let {id}=req.params
+      const {id}=req.params
       const PersonaldData = await houseModel.findById(id);
       res.status(200).send(PersonaldData);
     } catch (error) {
@@ -28,17 +28,17 @@ const getaById = async (req, res) => {
 const Post = async (req, res) => {
   try {
     //validation
-    let { error } = houseValidation(req.body);
+    const { error } = houseValidation(req.body);
     if (error) return res.status(405).send(error.message);
     //checking the user is valid
-    let userData = await usersModel.findOne({_id: req.body.user})
+    const userData = await usersModel.findOne({_id: req.body.user})
     if(!userData) return res.status(404).send({status:false, message: "user not found!"});
     //posting the data
     const postData = new houseModel(req.body);
     //saving the data
     await postData.save();
     //returning the data
-    res.status(200).send({
+    res.status(201).send({
         status:true,
         message:'successfuly inserted',
         data:postData
@@ -50,12 +50,12 @@ const Post = async (req, res) => {
 //put
 const Put = async (req, res) => {
     try {
-        let {id}=req.params
+      const {id}=req.params
         //validation    
-      let { error } = houseValidation(req.body);
+      const { error } = houseValidation(req.body);
       if (error) return res.status(405).send(error.message);
           //checking the user is valid
-    let userData = await usersModel.findOne({_id: req.body.user})
+          const userData = await usersModel.findOne({_id: req.body.user})
     if(!userData) return res.status(404).send({status:false, message: "user not found!"});
       //putting the data
       const putdate =await houseModel.findByIdAndUpdate(id,req.body,{new:true});
@@ -72,12 +72,14 @@ const Put = async (req, res) => {
   //dalete specific databyId
   const Delete=async(req,res)=>{
     try {
-        let {id}=req.params
+        const {id}=req.params
         //delete specific databyId
-        let deletedata=await houseModel.findByIdAndDelete(id)
+        const deletedata=await houseModel.findByIdAndDelete(id)
         res.status(200).send({
             status:true,
             message:'successfuly deleted',
+            data:deletedata
+
      
         });
     } catch (error) {

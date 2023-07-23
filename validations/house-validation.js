@@ -15,7 +15,7 @@ function houseValidation(house){
         bathRooms:joi.number().required(),
         masterRoom:joi.string().required(),
         descreption:joi.string().required(),
-        user:joi.string().required(),
+        user:joi.string(),
     })
     return houseVal.validate(house)
 }

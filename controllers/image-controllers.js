@@ -17,7 +17,7 @@ const get = async (req, res) => {
 //getById
 const getaById = async (req, res) => {
     try {
-        let {id}=req.params
+      const {id}=req.params
       const PersonaldData = await imagesModel.findById(id);
       res.status(200).send(PersonaldData);
     } catch (error) {
@@ -28,10 +28,10 @@ const getaById = async (req, res) => {
 const Post = async (req, res) => {
   try {
     //validation
-    let { error } = imagesValidation(req.body);
+    const { error } = imagesValidation(req.body);
     if (error) return res.status(405).send(error.message);
     //checking the user is valid
-    let houseData = await houseModel.findOne({_id: req.body.house})
+    const houseData = await houseModel.findOne({_id: req.body.house})
     if(!houseData) return res.status(404).send({status:false, message: "house not found!"});
     //posting the data
     const postData = new imagesModel(req.body);
@@ -50,12 +50,12 @@ const Post = async (req, res) => {
 //put
 const Put = async (req, res) => {
     try {
-        let {id}=req.params
+      const {id}=req.params
         //validation    
-      let { error } = imagesValidation(req.body);
+        const { error } = imagesValidation(req.body);
       if (error) return res.status(405).send(error.message);
           //checking the user is valid
-    let userData = await houseModel.findOne({_id: req.body.house})
+          const userData = await houseModel.findOne({_id: req.body.house})
     if(!userData) return res.status(404).send({status:false, message: "user not found!"});
       //putting the data
       const putdate =await imagesModel.findByIdAndUpdate(id,req.body,{new:true});
@@ -72,12 +72,13 @@ const Put = async (req, res) => {
   //dalete specific databyId
   const Delete=async(req,res)=>{
     try {
-        let {id}=req.params
+      const {id}=req.params
         //delete specific databyId
-        let deletedata=await imagesModel.findByIdAndDelete(id)
+        const deletedata=await imagesModel.findByIdAndDelete(id)
         res.status(200).send({
             status:true,
             message:'successfuly deleted',
+            data:deletedata
      
         });
     } catch (error) {

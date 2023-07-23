@@ -1,20 +1,19 @@
-const { houseModel } = require("../models/Houses-model");
+
 const { usersModel } = require("../models/users-model");
 const { loginValidation } = require("../validations/login-validation")
 const bcrypt=require('bcrypt')
 let jwt = require('jsonwebtoken');
-require('dotenv').config();
 require('dotenv').config();
 
 //login function
 const login = async (req, res) => {
     try {
         // validation
-        let { error } = loginValidation(req.body);
+        const { error } = loginValidation(req.body);
         if (error) return res.status(449).send(error.message);
     
         // find user data
-        let usergetdata = await usersModel.findOne({
+        const usergetdata = await usersModel.findOne({
             email: req.body.email,
         });
         if (!usergetdata)
@@ -24,7 +23,7 @@ const login = async (req, res) => {
           });
     
         // check password
-        let checkpass = await bcrypt.compare(
+        const checkpass = await bcrypt.compare(
           req.body.password,
           usergetdata.password
         );
@@ -34,7 +33,7 @@ const login = async (req, res) => {
             message: 'username or password is incorrect',
           });
         // token using jwt
-        let token = jwt.sign(
+        const token = jwt.sign(
           {
             id: usergetdata._id,
             name: usergetdata.name,
