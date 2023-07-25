@@ -1,10 +1,12 @@
 const express=require('express')
 const mongoose=require('mongoose')
+const cors=require('cors')
 // var createError = require('http-errors');
-const { MongoMemoryServer } =require('mongodb-memory-server');
+// const { MongoMemoryServer } =require('mongodb-memory-server');
 require('dotenv').config()
 const app=express()
 app.use(express.json());
+app.use(cors({origin:'http://localhost:5173'}))
 // connecting to mongodb server
 mongoose.set('strictQuery', false);
 
