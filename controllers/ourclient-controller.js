@@ -62,9 +62,29 @@ const Put = async (req, res, ) => {
     res.status(400).send(error.message);
   }
 };
+ //dalete specific databyId
+ const Delete=async(req,res)=>{
+  try {
+      const {id}=req.params
+      //delete specific databyId
+      const deletedata=await houseModel.findByIdAndDelete(id)
+      res.status(200).send({
+          status:true,
+          message:'successfuly deleted',
+          data:deletedata
+
+   
+      });
+  } catch (error) {
+      res.status(400).send(error.message);
+  }
+ 
+
+}
 module.exports = {
   get,
   getById,
   Post,
   Put,
+  Delete
 };
