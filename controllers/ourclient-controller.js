@@ -67,7 +67,7 @@ const Put = async (req, res, ) => {
   try {
       const {id}=req.params
       //delete specific databyId
-      const deletedata=await houseModel.findByIdAndDelete(id)
+      const deletedata=await clientModel.findByIdAndDelete(id)
       res.status(200).send({
           status:true,
           message:'successfuly deleted',
