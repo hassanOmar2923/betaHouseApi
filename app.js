@@ -6,7 +6,7 @@ const cors=require('cors')
 require('dotenv').config()
 const app=express()
 app.use(express.json());
-app.use(cors({origin:['http://localhost:5173','https://beta-house-fawn.vercel.app/']}))
+app.use(cors({origin:['http://localhost:5173','https://beta-house-fawn.vercel.app']}))
 // connecting to mongodb server
 mongoose.set('strictQuery', false);
 
