@@ -59,9 +59,23 @@ const Put = async (req, res, ) => {
     res.status(400).send(error.message);
   }
 };
+
+const Delete = async (req, res, ) => {
+  try {
+    const { id } = req.params;
+    const DeleteData = await serviceModel.findByIdAndDelete(id);
+    res.status(200).send({
+      status:true,
+      message:'successfuly deleted'
+    });
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+};
 module.exports = {
   get,
   getById,
   Post,
   Put,
+  Delete
 };
