@@ -9,7 +9,8 @@ const cleintShmea = new mongoose.Schema({
     type: String,
     required: true,
   },
-});
+},
+{ timestamps: true });
 
 const clientModel = mongoose.model('client', cleintShmea);
 

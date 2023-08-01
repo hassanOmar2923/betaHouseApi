@@ -12,7 +12,8 @@ const contactShmea = new mongoose.Schema({
     type: String,
     required: true,
   },
-});
+},
+{ timestamps: true });
 
 const contactModel = mongoose.model('contact', contactShmea);
 

@@ -3,7 +3,8 @@ const { Aboutvalidation } = require('../validations/about-validation');
 
 const get = async (req, res) => {
   try {
-    const data = await aboutModel.find();
+    const data = await aboutModel.find().sort({createdAt:-1}).limit(1)
+  
     res.status(200).send(data);
   } catch (error) {
     res.status(404).send(error.message);
@@ -25,9 +26,23 @@ const Post = async (req, res) => {
   try {
     const { error } = Aboutvalidation(req.body);
     if (error) return res.status(400).send(error.message);
-    const postabout = await aboutModel(req.body);
-    await postabout.save();
-    res.status(201).send({ status: true, postabout, message: 'successfully saved' });
+    const getData = await aboutModel.find().sort({createdAt:-1}).limit(1)
+ 
+    if(!getData){
+      const postabout = await aboutModel(req.body);
+      await postabout.save();
+      res.status(201).send({ status: true, message: 'successfully saved' });
+      
+    
+
+
+    }else{
+     
+      await aboutModel.findByIdAndUpdate(getData[0]._id,req.body,{new:true});
+    res.status(201).send({ status: true, message: 'successfully updated' });
+      
+    }
+    
   } catch (error) {
     res.status(404).send(error.message);
   }

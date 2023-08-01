@@ -12,7 +12,8 @@ const serviceShmea = new mongoose.Schema({
     type: String,
     required: true,
   },
-});
+},
+{ timestamps: true });
 
 const serviceModel = mongoose.model('service', serviceShmea);
 

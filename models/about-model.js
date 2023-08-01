@@ -9,7 +9,9 @@ const aboutShmea = new mongoose.Schema({
     type: String,
     required: true,
   },
-});
+
+},
+{ timestamps: true });
 
 const aboutModel = mongoose.model('About', aboutShmea);
 
