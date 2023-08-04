@@ -31,7 +31,7 @@ const houseSchema=mongoose.Schema({
     },
     imagePreview:{
         type:String,
-        required:true
+        // required:true
     },
     isAvailible:{
         type:String,

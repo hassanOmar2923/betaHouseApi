@@ -9,7 +9,7 @@ function houseValidation(house){
         rent:joi.number().required(),
         deposite:joi.number().required(),
         parking:joi.string().required(),
-        imagePreview:joi.string().required(),
+        imagePreview:joi.string(),
         isAvailible:joi.string().required(),
         rooms:joi.number().required(),
         bathRooms:joi.number().required(),
