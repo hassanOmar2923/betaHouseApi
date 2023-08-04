@@ -31,8 +31,8 @@ const Post = async (req, res) => {
     const { error } = imagesValidation(req.body);
     if (error) return res.status(405).send(error.message);
     //checking the user is valid
-    const houseData = await houseModel.findOne({_id: req.body.house})
-    if(!houseData) return res.status(404).send({status:false, message: "house not found!"});
+    // const houseData = await houseModel.findOne({_id: req.body.house})
+    // if(!houseData) return res.status(404).send({status:false, message: "house not found!"});
     //posting the data
     const postData = new imagesModel(req.body);
     //saving the data
@@ -55,8 +55,8 @@ const Put = async (req, res) => {
         const { error } = imagesValidation(req.body);
       if (error) return res.status(405).send(error.message);
           //checking the user is valid
-          const userData = await houseModel.findOne({_id: req.body.house})
-    if(!userData) return res.status(404).send({status:false, message: "user not found!"});
+          // const userData = await houseModel.findOne({_id: req.body.house})
+    // if(!userData) return res.status(404).send({status:false, message: "user not found!"});
       //putting the data
       const putdate =await imagesModel.findByIdAndUpdate(id,req.body,{new:true});
       //returning the data

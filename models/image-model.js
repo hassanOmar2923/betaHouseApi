@@ -10,6 +10,10 @@ const imageSchema=mongoose.Schema({
         type:String,
         required:true
     },
+    description:{
+        type:String,
+        required:true
+    },
 })
 //model
 const imagesModel=mongoose.model('images', imageSchema)

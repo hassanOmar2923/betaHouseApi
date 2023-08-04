@@ -4,6 +4,7 @@ function imagesValidation(image){
     const imageVal=joi.object({
         house:joi.string().required(),
         image:joi.string().required(),
+        description:joi.string().required(),
     })
     return imageVal.validate(image)
 }
