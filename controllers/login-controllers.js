@@ -43,7 +43,7 @@ const login = async (req, res) => {
         );
         
     
-        res.status(200).header('token', token).json({
+        res.status(200).header('authorization', token).json({
           status: true,
           message: 'successfully logged in',
           token: token,
