@@ -39,7 +39,7 @@ const login = async (req, res) => {
             name: usergetdata.name,
             email: usergetdata.email,
             role:usergetdata.role,
-            userData:usergetdata
+        
           },
           process.env.token
         );
