@@ -76,7 +76,7 @@ const Put = async (req, res) => {
       
     //put data
 
-    const putdate =await usersModel.findByIdAndUpdate(id,{status:req.body.status},{new:true});
+    const putdate =await usersModel.findByIdAndUpdate(id,{status:status},{new:true});
       res.status(200).send({
         status:true,
         message:'successfuly Updated',
