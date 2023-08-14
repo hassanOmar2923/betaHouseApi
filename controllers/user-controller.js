@@ -67,6 +67,27 @@ const Put = async (req, res) => {
       res.status(400).send(error.message);
     }
   };
+
+  const updateStatus = async (req, res) => {
+    try {
+      const {id}=req.params
+    
+    
+      
+    //put data
+
+    const putdate =await usersModel.findByIdAndUpdate(id,{status:req.body.status},{new:true});
+      res.status(200).send({
+        status:true,
+        message:'successfuly Updated',
+        data:putdate
+
+    });
+     
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  };
   //dalete specific databyId
   const Delete=async(req,res)=>{
     try {
@@ -86,4 +107,4 @@ const Put = async (req, res) => {
    
 
   }
-module.exports = { get, Post ,Put,getaById,Delete};
+module.exports = { get, Post,updateStatus ,Put,getaById,Delete};
