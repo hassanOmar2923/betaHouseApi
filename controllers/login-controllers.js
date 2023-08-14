@@ -38,7 +38,7 @@ const login = async (req, res) => {
             id: usergetdata._id,
             name: usergetdata.name,
             email: usergetdata.email,
-            role:usergetdata.role,
+           
         
           },
           process.env.token
