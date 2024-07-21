@@ -6,11 +6,11 @@ const cors=require('cors')
 require('dotenv').config()
 const app=express()
 app.use(express.json());
-app.use(cors({origin:['http://localhost:5173','https://beta-house-fawn.vercel.app']}))
+app.use(cors({origin:['http://localhost:5173',process.env.frontend]}))
 // connecting to mongodb server
 mongoose.set('strictQuery', false);
 
-mongoose.connect('mongodb+srv://xasancumar:1zhHPp6abdOhvt1k@cluster0.d4o1wlf.mongodb.net/betaHOUSE')
+mongoose.connect(process.env.url)
   .then(() => console.log('Connected!'));
 
 
